@@ -176,7 +176,7 @@ class Paragraph extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       data,
-      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+      style: Theme.of(context).textTheme.labelLarge?.copyWith(
         color: color,
         fontSize: fontSize,
         fontWeight: fontWeight,

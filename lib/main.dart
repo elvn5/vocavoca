@@ -1,14 +1,21 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_localization_loader/easy_localization_loader.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:vocavoca/src/routes/router.dart';
-import 'package:vocavoca/src/screens/login.dart';
+import 'package:vocavoca/src/utils/utils.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await dotenv.load();
+  await EasyLocalization.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
 
   String supabaseUrl = dotenv.env['SUPABASE_URL'] ?? '';
   String supabaseKey = dotenv.env['SUPABASE_ANON_KEY'] ?? '';
@@ -17,7 +24,17 @@ void main() async {
     url: supabaseUrl,
     anonKey: supabaseKey,
   );
-  runApp(App());
+  runApp(
+    EasyLocalization(
+        supportedLocales: const [
+          Locale("en"),
+          Locale("ru"),
+        ],
+        path: "assets/translations",
+        fallbackLocale: const Locale("en"),
+        assetLoader: const YamlAssetLoader(),
+        child: App()),
+  );
 }
 
 class App extends StatelessWidget {
@@ -30,9 +47,9 @@ class App extends StatelessWidget {
       designSize: const Size(412, 892),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (_ , child) {
+      builder: (_, child) {
         return MaterialApp.router(
-          theme: ThemeData.light(),
+          theme: lightTheme,
           routerConfig: _router.config(),
         );
       },

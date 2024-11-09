@@ -5,7 +5,7 @@ import 'package:vocavoca/src/extensions/theme_extension.dart';
 class AppTextField extends StatelessWidget {
   const AppTextField({
     super.key,
-    required this.hintText,
+    this.hintText,
     this.obscureText = false,
     this.keyboardType = TextInputType.text,
     this.onChanged,
@@ -33,7 +33,7 @@ class AppTextField extends StatelessWidget {
     this.inputFormatters,
     this.validator,
     this.prefixIcon,
-    this.suffixIcon,
+    this.suffixIcon = const Icon(Icons.cancel, size: 24,),
     this.prefix,
     this.suffix,
     this.labelText,
@@ -42,7 +42,7 @@ class AppTextField extends StatelessWidget {
     this.counterText,
   });
 
-  final String hintText;
+  final String? hintText;
   final bool obscureText;
   final TextInputType keyboardType;
   final void Function(String)? onChanged;
@@ -70,7 +70,7 @@ class AppTextField extends StatelessWidget {
   final List<TextInputFormatter>? inputFormatters;
   final FormFieldValidator<String>? validator;
   final Icon? prefixIcon;
-  final Icon? suffixIcon;
+  final Icon suffixIcon;
   final Widget? prefix;
   final Widget? suffix;
   final String? labelText;
