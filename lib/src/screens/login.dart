@@ -1,19 +1,78 @@
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:vocavoca/src/routes/router.dart';
-import 'package:vocavoca/src/utils/app_images.dart';
+import 'package:vocavoca/src/services/services.dart';
+import 'package:vocavoca/src/utils/utils.dart';
 import 'package:vocavoca/src/widgets/widgets.dart';
 
 @RoutePage()
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  State<StatefulWidget> createState() {
+    return LoginScreenState();
+  }
+}
+
+class LoginScreenState extends State<LoginScreen> {
+  bool _signInLoading = false;
+  bool _signUpLoading = false;
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _loginFormKey = GlobalKey<FormBuilderState>();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     void onTapRegister() {
-      context.router.push(const RegisterRoute());
+      context.router.push(RegisterRoute());
+    }
+
+    void onTapLogin() async {
+      final isValid = _loginFormKey.currentState?.validate();
+      if (isValid != true) {
+        return;
+      }
+      setState(() {
+        _signInLoading = true;
+      });
+
+      try {
+        await supabaseService.auth.signInWithPassword(
+            email: _emailController.text.trim(),
+            password: _passwordController.text.trim());
+        if (context.mounted) {
+          context.router.push(const HomeRoute());
+        }
+      } catch (e) {
+        if (context.mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text("Ошибка сервера"),
+              backgroundColor: Color.fromARGB(255, 243, 49, 6),
+            ),
+          );
+        }
+      } finally {
+        setState(() {
+          _signInLoading = false;
+        });
+      }
     }
 
     return SafeArea(
@@ -24,35 +83,47 @@ class LoginScreen extends StatelessWidget {
             children: [
               Image.asset(loginImage),
               Gap(55.h),
-              AppTextField(
-                labelText: "example@gmail.com",
-              ),
-              Gap(20.h),
-              AppTextField(
-                labelText: "Password",
-              ),
+              FormBuilder(
+                  key: _loginFormKey,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        AppTextField(
+                          labelText: "E-Mail",
+                          controller: _emailController,
+                        ),
+                        Gap(20.h),
+                        AppTextField(
+                          controller: _passwordController,
+                          labelText: "Пароль",
+                        ),
+                      ],
+                    ),
+                  )),
               Gap(20.h),
               SizedBox(
                 width: double.infinity,
-                child: AppElevatedButton(
-                  onPressed: () => {},
-                  text: "Login",
-                ),
+                child: _signInLoading
+                    ? const MiniLoader()
+                    : AppElevatedButton(
+                        onPressed: onTapLogin,
+                        text: "Войти",
+                      ),
               ),
               Gap(20.h),
               SizedBox(
                 width: double.infinity,
                 child: AppElevatedButton(
                   onPressed: onTapRegister,
-                  text: "Register",
+                  text: "Регистрация",
                 ),
               ),
               Gap(10.h),
               const Divider(),
               SizedBox(
                 width: double.infinity,
-                child: AppTextButton(
-                    onPressed: () => {}, text: "Forgot password?"),
+                child:
+                    AppTextButton(onPressed: () => {}, text: "Забыли пароль?"),
               )
             ],
           ),
