@@ -57,7 +57,7 @@ ThemeData lightTheme = ThemeData(
   // unselectedWidgetColor: grey200,
   useMaterial3: true,
   textTheme: TextTheme(
-    titleLarge: TextStyle(fontFamily: "Roboto", fontSize: 57.sp),
+    titleLarge: TextStyle(fontFamily: "Roboto", fontSize: 22.sp),
     titleMedium: TextStyle(fontFamily: "Roboto"),
     labelLarge: TextStyle(fontFamily: "Roboto", fontSize: 14.sp),
     bodyMedium: TextStyle(fontFamily: "Roboto"),

@@ -5,18 +5,17 @@ import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:vocavoca/src/di/di.dart';
 import 'package:vocavoca/src/routes/router.dart';
+import 'package:vocavoca/src/services/services.dart';
 import 'package:vocavoca/src/utils/utils.dart';
 
 void main() async {
+  // Init OS native functions
   WidgetsFlutterBinding.ensureInitialized();
-
   await dotenv.load();
-  await EasyLocalization.ensureInitialized();
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-  ]);
 
+  // Init supabase instance
   String supabaseUrl = dotenv.env['SUPABASE_URL'] ?? '';
   String supabaseKey = dotenv.env['SUPABASE_ANON_KEY'] ?? '';
 
@@ -24,6 +23,16 @@ void main() async {
     url: supabaseUrl,
     anonKey: supabaseKey,
   );
+  // Setup DI with GetIt
+  setupDi();
+  // Load environment variables
+  // Init localization
+  await EasyLocalization.ensureInitialized();
+  // Set preffered orientation
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
+
   runApp(
     EasyLocalization(
         supportedLocales: const [
