@@ -1,5 +1,6 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
+import 'package:vocavoca/src/widgets/in_development.dart';
 
 @RoutePage()
 class AchievementsScreen extends StatelessWidget {
@@ -7,6 +8,8 @@ class AchievementsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return const Scaffold(
+      body: InDevelopment(),
+    );
   }
 }

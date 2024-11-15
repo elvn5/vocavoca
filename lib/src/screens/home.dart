@@ -27,15 +27,15 @@ class HomeScreen extends StatelessWidget {
             items: const [
               BottomNavigationBarItem(
                 icon: Icon(Icons.language),
-                label: "Academy",
+                label: "VocaVoca",
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.mood),
-                label: "Academy",
+                label: "Достижения",
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.person),
-                label: "Academy",
+                label: "Профиль",
               ),
             ],
           ),

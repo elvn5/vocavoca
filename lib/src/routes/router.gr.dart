@@ -53,6 +53,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const VerificationScreen(),
       );
     },
+    VocaGameRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const VocaGameScreen(),
+      );
+    },
     VocaVocaRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -157,6 +163,20 @@ class VerificationRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'VerificationRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [VocaGameScreen]
+class VocaGameRoute extends PageRouteInfo<void> {
+  const VocaGameRoute({List<PageRouteInfo>? children})
+      : super(
+          VocaGameRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'VocaGameRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

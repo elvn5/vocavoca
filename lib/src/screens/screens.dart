@@ -6,3 +6,4 @@ export 'home.dart';
 export 'vocavoca.dart';
 export 'profile.dart';
 export 'achievements.dart';
+export 'voca_game.dart';

@@ -34,33 +34,12 @@ ThemeData lightTheme = ThemeData(
       ), // Padding
     ),
   ),
-  // bottomNavigationBarTheme: BottomNavigationBarThemeData(
-  //   showUnselectedLabels: true,
-  //   selectedItemColor: primaryColor,
-  //   unselectedItemColor: secondaryColor,
-  //   selectedLabelStyle: TextStyle(
-  //     color: primaryColor,
-  //     fontFamily: "zenMaruGothic",
-  //     fontSize: 11.sp,
-  //     fontWeight: FontWeight.w400,
-  //   ),
-  //   unselectedLabelStyle: TextStyle(
-  //     color: secondaryColor,
-  //     fontFamily: "zenMaruGothic",
-  //     fontSize: 11.sp,
-  //     fontWeight: FontWeight.w400,
-  //   ),
-  //   selectedIconTheme: const IconThemeData(
-  //     color: primaryColor,
-  //   ),
-  // ),
-  // unselectedWidgetColor: grey200,
   useMaterial3: true,
   textTheme: TextTheme(
     titleLarge: TextStyle(fontFamily: "Roboto", fontSize: 22.sp),
-    titleMedium: TextStyle(fontFamily: "Roboto"),
+    titleMedium: TextStyle(fontFamily: "Roboto", fontSize: 18.sp),
     labelLarge: TextStyle(fontFamily: "Roboto", fontSize: 14.sp),
-    bodyMedium: TextStyle(fontFamily: "Roboto"),
-    bodySmall: TextStyle(fontFamily: "Roboto"),
+    bodyMedium: TextStyle(fontFamily: "Roboto", fontSize: 10.sp),
+    bodySmall: TextStyle(fontFamily: "Roboto", fontSize: 8.sp),
   ),
 );

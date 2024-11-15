@@ -41,7 +41,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_native_splash: ^2.3.4
-  auto_route: ^8.2.0
+  auto_route: ^8.1.4
   flutter_bloc: ^8.0.0
   dio: ^5.4.3+1
   gap: ^3.0.1
@@ -59,6 +59,8 @@ dependencies:
   flutter_form_builder: ^9.5.0
   flutter_hooks: ^0.20.5
   form_builder_validators: ^11.0.0
+  cached_network_image: ^3.4.1
+  flutter_emoji: ^2.5.1
 
 dev_dependencies:
   flutter_test:

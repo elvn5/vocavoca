@@ -2,15 +2,14 @@ import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:vocavoca/src/bloc/bloc.dart';
 import 'package:vocavoca/src/di/di.dart';
-import 'package:vocavoca/src/services/services.dart';
+import 'package:vocavoca/src/features/features.dart';
+import 'package:vocavoca/src/routes/router.dart';
 import 'package:vocavoca/src/utils/consts.dart';
-import 'package:vocavoca/src/widgets/app_container.dart';
-import 'package:vocavoca/src/widgets/mini_loader.dart';
-import 'package:vocavoca/src/widgets/typography.dart';
+import 'package:vocavoca/src/widgets/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:auto_route/auto_route.dart';
 
 @RoutePage()
 class VocaVocaScreen extends StatelessWidget {
@@ -19,6 +18,10 @@ class VocaVocaScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final elementaryBloc = getIt<ElementaryBloc>();
+
+    void onTapTheme() {
+      context.router.push(const VocaGameRoute());
+    }
 
     return DefaultTabController(
       length: 3,
@@ -61,39 +64,26 @@ class VocaVocaScreen extends StatelessWidget {
                 }
 
                 if (state is ElementaryLoadedState) {
-                  final name = state.data[0].name;
-                  final img = state.data[0].img;
+                  var data = state.data;
 
                   return AppContainer(
-                    child: ConstrainedBox(
-                      constraints: BoxConstraints(maxHeight: 200.h),
-                      child: Card(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Paragraph(name),
-                            ClipRRect(
-                              borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(20),
-                                bottomRight: Radius.circular(20),
-                              ),
-                              child: Image.network(
-                                img,
-                                width: 80.w,
-                                height: 80.h,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                    child: ListView.builder(
+                      itemCount: state.data.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return VocaTheme(
+                          name: data[index].name,
+                          img: data[index].img,
+                          onTap: onTapTheme,
+                        );
+                      },
                     ),
                   );
                 }
                 return kEmptyWidget;
               },
             ),
-            kEmptyWidget,
-            kEmptyWidget
+            const InDevelopment(),
+            const InDevelopment(),
           ]),
         ),
       ),

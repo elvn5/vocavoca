@@ -1,6 +1,3 @@
-
 import 'package:flutter/material.dart';
 
-class LightThemeColors {
-  static const Color lightColor = Color(0xFF);
-}
+const errorColor = Color(0xFFB3261E);
