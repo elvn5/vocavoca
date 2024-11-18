@@ -11,18 +11,14 @@ class ElementaryBloc extends Bloc<ElementaryEvent, ElementaryState> {
       emit(ElementaryLoadingState());
 
       try {
-        final response = await _supabaseService.from('elementary').select();
+        final response = await _supabaseService.from('Quiz').select(
+            'id,description, imageUrl, Question (id, desc, Option(id, is_correct, desc))');
 
-        final data = response.map((theme) {
-          return VocaTheme.fromJson(theme);
-        }).toList();
+        final data = response.map((el) => VocaQuiz.fromJson(el)).toList();
 
-        emit(
-          ElementaryLoadedState(
-            data: data,
-          ),
-        );
+        emit(ElementaryLoadedState(data: data));
       } catch (e) {
+        print(e.toString());
         emit(ElementaryLoadingErrorState());
       }
     });

@@ -54,8 +54,9 @@ class LoginScreenState extends State<LoginScreen> {
 
       try {
         await supabaseService.auth.signInWithPassword(
-            email: _emailController.text.trim(),
-            password: _passwordController.text.trim());
+          email: "zetxc996@gmail.com",
+          password: "erma219611",
+        );
         if (context.mounted) {
           context.router.push(const HomeRoute());
         }

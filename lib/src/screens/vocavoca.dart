@@ -1,4 +1,3 @@
-import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -71,8 +70,8 @@ class VocaVocaScreen extends StatelessWidget {
                       itemCount: state.data.length,
                       itemBuilder: (BuildContext context, int index) {
                         return VocaTheme(
-                          name: data[index].name,
-                          img: data[index].img,
+                          name: data[index].description,
+                          img: data[index].imageUrl,
                           onTap: onTapTheme,
                         );
                       },

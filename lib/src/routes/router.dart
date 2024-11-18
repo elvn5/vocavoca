@@ -9,11 +9,11 @@ class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
         // Login & Sign-Up
-        AutoRoute(page: LoginRoute.page),
+        AutoRoute(page: LoginRoute.page, initial: true),
         AutoRoute(page: RegisterRoute.page),
 
         // Bottom Navigation Bar
-        AutoRoute(page: HomeRoute.page, initial: true, children: [
+        AutoRoute(page: HomeRoute.page, children: [
           AutoRoute(page: VocaVocaRoute.page, initial: true),
           AutoRoute(page: AchievementsRoute.page),
           AutoRoute(page: ProfileRoute.page),

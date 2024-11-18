@@ -1,5 +1,6 @@
 import "package:equatable/equatable.dart";
-import "package:vocavoca/src/models/voca_theme/voca_theme.dart";
+import "package:vocavoca/src/models/models.dart";
+import "package:vocavoca/src/models/voca_quiz.dart";
 
 abstract class ElementaryState extends Equatable {
   List<Object?> get props => [];
@@ -12,7 +13,7 @@ class ElementaryLoadingState extends ElementaryState {
 class ElementaryLoadedState extends ElementaryState {
   ElementaryLoadedState({required this.data});
 
-  final List<VocaTheme> data;
+  final List<VocaQuiz> data;
 
   List<Object?> get props => [data];
 }
