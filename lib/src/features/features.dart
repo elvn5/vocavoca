@@ -1,1 +1,1 @@
-export 'vocavoca/voca_theme.dart';
+export 'vocavoca/vocavoca.dart';

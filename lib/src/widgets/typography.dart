@@ -2,22 +2,22 @@ import 'package:flutter/material.dart';
 
 class TitleLarge extends StatelessWidget {
   const TitleLarge(
-      this.data, {
-        super.key,
-        this.textSpan,
-        this.style,
-        this.strutStyle,
-        this.textAlign,
-        this.textDirection,
-        this.locale,
-        this.overflow,
-        this.softWrap,
-        this.color,
-        this.fontSize,
-        this.fontWeight,
-      });
+    this.data, {
+    super.key,
+    this.textSpan,
+    this.style,
+    this.strutStyle,
+    this.textAlign,
+    this.textDirection,
+    this.locale,
+    this.overflow,
+    this.softWrap,
+    this.color,
+    this.fontSize,
+    this.fontWeight,
+  });
 
-  final String data;
+  final String? data;
   final InlineSpan? textSpan;
   final TextStyle? style;
   final StrutStyle? strutStyle;
@@ -33,12 +33,12 @@ class TitleLarge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      data,
+      data ?? "",
       style: Theme.of(context).textTheme.titleLarge?.copyWith(
-        color: color,
-        fontSize: fontSize,
-        fontWeight: fontWeight,
-      ),
+            color: color,
+            fontSize: fontSize,
+            fontWeight: fontWeight,
+          ),
       textAlign: textAlign,
       textDirection: textDirection,
       strutStyle: strutStyle,
@@ -50,19 +50,19 @@ class TitleLarge extends StatelessWidget {
 
 class TitleMedium extends StatelessWidget {
   const TitleMedium(
-      this.data, {
-        super.key,
-        this.style,
-        this.strutStyle,
-        this.textAlign,
-        this.textDirection,
-        this.locale,
-        this.overflow,
-        this.softWrap,
-        this.color,
-        this.fontSize,
-        this.fontWeight,
-      });
+    this.data, {
+    super.key,
+    this.style,
+    this.strutStyle,
+    this.textAlign,
+    this.textDirection,
+    this.locale,
+    this.overflow,
+    this.softWrap,
+    this.color,
+    this.fontSize,
+    this.fontWeight,
+  });
 
   final String data;
   final TextStyle? style;
@@ -81,10 +81,10 @@ class TitleMedium extends StatelessWidget {
     return Text(
       data,
       style: Theme.of(context).textTheme.titleMedium?.copyWith(
-        color: color,
-        fontSize: fontSize,
-        fontWeight: fontWeight,
-      ),
+            color: color,
+            fontSize: fontSize,
+            fontWeight: fontWeight,
+          ),
       textAlign: textAlign,
       textDirection: textDirection,
       strutStyle: strutStyle,
@@ -96,20 +96,20 @@ class TitleMedium extends StatelessWidget {
 
 class Caption extends StatelessWidget {
   const Caption(
-      this.data, {
-        super.key,
-        this.textSpan,
-        this.style,
-        this.strutStyle,
-        this.textAlign,
-        this.textDirection,
-        this.locale,
-        this.overflow,
-        this.softWrap,
-        this.color,
-        this.fontSize,
-        this.fontWeight,
-      });
+    this.data, {
+    super.key,
+    this.textSpan,
+    this.style,
+    this.strutStyle,
+    this.textAlign,
+    this.textDirection,
+    this.locale,
+    this.overflow,
+    this.softWrap,
+    this.color,
+    this.fontSize,
+    this.fontWeight,
+  });
 
   final String data;
   final InlineSpan? textSpan;
@@ -129,10 +129,10 @@ class Caption extends StatelessWidget {
     return Text(
       data,
       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-        color: color,
-        fontSize: fontSize,
-        fontWeight: fontWeight,
-      ),
+            color: color,
+            fontSize: fontSize,
+            fontWeight: fontWeight,
+          ),
       textAlign: textAlign,
       textDirection: textDirection,
       strutStyle: strutStyle,
@@ -144,20 +144,20 @@ class Caption extends StatelessWidget {
 
 class Paragraph extends StatelessWidget {
   const Paragraph(
-      this.data, {
-        super.key,
-        this.textSpan,
-        this.style,
-        this.strutStyle,
-        this.textAlign,
-        this.textDirection,
-        this.locale,
-        this.overflow,
-        this.softWrap,
-        this.color,
-        this.fontSize,
-        this.fontWeight,
-      });
+    this.data, {
+    super.key,
+    this.textSpan,
+    this.style,
+    this.strutStyle,
+    this.textAlign,
+    this.textDirection,
+    this.locale,
+    this.overflow,
+    this.softWrap,
+    this.color,
+    this.fontSize,
+    this.fontWeight,
+  });
 
   final String data;
   final InlineSpan? textSpan;
@@ -177,10 +177,10 @@ class Paragraph extends StatelessWidget {
     return Text(
       data,
       style: Theme.of(context).textTheme.labelLarge?.copyWith(
-        color: color,
-        fontSize: fontSize,
-        fontWeight: fontWeight,
-      ),
+            color: color,
+            fontSize: fontSize,
+            fontWeight: fontWeight,
+          ),
       textAlign: textAlign,
       textDirection: textDirection,
       strutStyle: strutStyle,
@@ -192,20 +192,20 @@ class Paragraph extends StatelessWidget {
 
 class SmallText extends StatelessWidget {
   const SmallText(
-      this.data, {
-        super.key,
-        this.textSpan,
-        this.style,
-        this.strutStyle,
-        this.textAlign,
-        this.textDirection,
-        this.locale,
-        this.overflow,
-        this.softWrap,
-        this.color,
-        this.fontSize,
-        this.fontWeight,
-      });
+    this.data, {
+    super.key,
+    this.textSpan,
+    this.style,
+    this.strutStyle,
+    this.textAlign,
+    this.textDirection,
+    this.locale,
+    this.overflow,
+    this.softWrap,
+    this.color,
+    this.fontSize,
+    this.fontWeight,
+  });
 
   final String data;
   final InlineSpan? textSpan;
@@ -225,10 +225,10 @@ class SmallText extends StatelessWidget {
     return Text(
       data,
       style: Theme.of(context).textTheme.bodySmall?.copyWith(
-        color: color,
-        fontSize: fontSize,
-        fontWeight: fontWeight,
-      ),
+            color: color,
+            fontSize: fontSize,
+            fontWeight: fontWeight,
+          ),
       textAlign: textAlign,
       textDirection: textDirection,
       strutStyle: strutStyle,

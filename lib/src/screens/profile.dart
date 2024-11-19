@@ -3,11 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:vocavoca/src/services/services.dart';
-import 'package:vocavoca/src/utils/app_images.dart';
-import 'package:vocavoca/src/utils/theme_colors.dart';
-import 'package:vocavoca/src/widgets/app_container.dart';
-import 'package:vocavoca/src/widgets/app_elevated_button.dart';
-import 'package:vocavoca/src/widgets/typography.dart';
+import 'package:vocavoca/src/utils/utils.dart';
+import 'package:vocavoca/src/widgets/widgets.dart';
 
 @RoutePage()
 class ProfileScreen extends StatelessWidget {

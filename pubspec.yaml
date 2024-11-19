@@ -61,6 +61,7 @@ dependencies:
   flutter_hooks: ^0.20.5
   form_builder_validators: ^11.0.0
   cached_network_image: ^3.4.1
+  flex_color_scheme: ^8.0.1
   flutter_emoji: ^2.5.1
 
 dev_dependencies:

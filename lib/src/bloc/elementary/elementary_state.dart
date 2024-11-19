@@ -1,6 +1,5 @@
 import "package:equatable/equatable.dart";
 import "package:vocavoca/src/models/models.dart";
-import "package:vocavoca/src/models/voca_quiz.dart";
 
 abstract class ElementaryState extends Equatable {
   List<Object?> get props => [];

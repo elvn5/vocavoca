@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vocavoca/src/widgets/typography.dart';
 
-final tertiaryStyle = ButtonStyle();
-
 class AppElevatedButton extends StatelessWidget {
   const AppElevatedButton({
     super.key,
@@ -17,6 +15,7 @@ class AppElevatedButton extends StatelessWidget {
     this.iconAlignment = IconAlignment.start,
     this.backgroundColor,
     this.style,
+    this.disabled = false,
   });
 
   final String text;
@@ -30,17 +29,24 @@ class AppElevatedButton extends StatelessWidget {
   final IconAlignment iconAlignment;
   final Color? backgroundColor;
   final ButtonStyle? style;
+  final bool disabled;
 
   @override
   Widget build(BuildContext context) {
+    const ButtonStyle disabledStyle = ButtonStyle(
+      backgroundColor: WidgetStatePropertyAll(Colors.grey),
+    );
+
     return ElevatedButton(
-      onPressed: onPressed,
+      onPressed: disabled ? null : onPressed,
       onLongPress: onLongPress,
       focusNode: focusNode,
       clipBehavior: clipBehavior,
       statesController: statesController,
       iconAlignment: iconAlignment,
-      style: style ?? Theme.of(context).elevatedButtonTheme.style,
+      style: disabled
+          ? disabledStyle
+          : style ?? Theme.of(context).elevatedButtonTheme.style,
       child: Paragraph(
         text,
         color: Colors.white,

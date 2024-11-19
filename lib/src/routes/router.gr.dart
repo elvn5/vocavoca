@@ -54,9 +54,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     VocaGameRoute.name: (routeData) {
+      final args = routeData.argsAs<VocaGameRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const VocaGameScreen(),
+        child: VocaGameScreen(
+          key: args.key,
+          questions: args.questions,
+        ),
       );
     },
     VocaVocaRoute.name: (routeData) {
@@ -169,16 +173,40 @@ class VerificationRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [VocaGameScreen]
-class VocaGameRoute extends PageRouteInfo<void> {
-  const VocaGameRoute({List<PageRouteInfo>? children})
-      : super(
+class VocaGameRoute extends PageRouteInfo<VocaGameRouteArgs> {
+  VocaGameRoute({
+    Key? key,
+    required List<Question> questions,
+    List<PageRouteInfo>? children,
+  }) : super(
           VocaGameRoute.name,
+          args: VocaGameRouteArgs(
+            key: key,
+            questions: questions,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'VocaGameRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<VocaGameRouteArgs> page =
+      PageInfo<VocaGameRouteArgs>(name);
+}
+
+class VocaGameRouteArgs {
+  const VocaGameRouteArgs({
+    this.key,
+    required this.questions,
+  });
+
+  final Key? key;
+
+  final List<Question> questions;
+
+  @override
+  String toString() {
+    return 'VocaGameRouteArgs{key: $key, questions: $questions}';
+  }
 }
 
 /// generated route for

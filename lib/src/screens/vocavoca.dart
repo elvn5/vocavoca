@@ -4,6 +4,7 @@ import 'package:gap/gap.dart';
 import 'package:vocavoca/src/bloc/bloc.dart';
 import 'package:vocavoca/src/di/di.dart';
 import 'package:vocavoca/src/features/features.dart';
+import 'package:vocavoca/src/models/models.dart';
 import 'package:vocavoca/src/routes/router.dart';
 import 'package:vocavoca/src/utils/consts.dart';
 import 'package:vocavoca/src/widgets/widgets.dart';
@@ -18,8 +19,12 @@ class VocaVocaScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final elementaryBloc = getIt<ElementaryBloc>();
 
-    void onTapTheme() {
-      context.router.push(const VocaGameRoute());
+    void onTapTheme(List<Question> questions) {
+      context.router.push(
+        VocaGameRoute(
+          questions: questions,
+        ),
+      );
     }
 
     return DefaultTabController(
@@ -72,7 +77,9 @@ class VocaVocaScreen extends StatelessWidget {
                         return VocaTheme(
                           name: data[index].description,
                           img: data[index].imageUrl,
-                          onTap: onTapTheme,
+                          onTap: () => onTapTheme(
+                            data[index].questions,
+                          ),
                         );
                       },
                     ),

@@ -8,7 +8,9 @@ class ElementaryBloc extends Bloc<ElementaryEvent, ElementaryState> {
 
   ElementaryBloc(this._supabaseService) : super(ElementaryLoadingState()) {
     on<ElementaryLoadEvent>((event, emit) async {
-      emit(ElementaryLoadingState());
+      emit(
+        ElementaryLoadingState(),
+      );
 
       try {
         final response = await _supabaseService.from('Quiz').select(
@@ -18,7 +20,6 @@ class ElementaryBloc extends Bloc<ElementaryEvent, ElementaryState> {
 
         emit(ElementaryLoadedState(data: data));
       } catch (e) {
-        print(e.toString());
         emit(ElementaryLoadingErrorState());
       }
     });

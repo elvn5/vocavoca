@@ -36,8 +36,9 @@ class VocaTheme extends StatelessWidget {
                 ),
                 child: CachedImage(
                   imageUrl: img,
-                  width: 80.w,
+                  fit: BoxFit.cover,
                   height: 80.h,
+                  width: 80.w,
                 ),
               ),
             ],
