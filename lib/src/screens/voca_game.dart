@@ -9,6 +9,7 @@ import 'package:vocavoca/src/features/features.dart';
 import 'package:vocavoca/src/models/models.dart';
 import 'package:vocavoca/src/routes/router.dart';
 import 'package:vocavoca/src/utils/consts.dart';
+import 'package:vocavoca/src/utils/random_shuffle.dart';
 import 'package:vocavoca/src/widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
 
@@ -45,7 +46,15 @@ class _VocaGameState extends State<VocaGameScreen> {
 
   @override
   void initState() {
-    _queue.addAll(widget.questions);
+    final List<Question> list = [];
+    for (var i = 0; i < widget.questions.length; i++) {
+      final el = widget.questions[i].copyWith(
+        options: randomShuffle(widget.questions[i].options),
+      );
+
+      list.add(el);
+    }
+    _queue.addAll(list);
 
     super.initState();
   }
@@ -53,6 +62,7 @@ class _VocaGameState extends State<VocaGameScreen> {
   @override
   Widget build(context) {
     Question? currentQuestion;
+
     if (_queue.isNotEmpty) {
       currentQuestion = _queue.first;
     }
