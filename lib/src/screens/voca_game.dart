@@ -32,6 +32,8 @@ class _VocaGameState extends State<VocaGameScreen> {
   final Queue<Question> _queue = Queue();
   String? _selectedOption;
   bool _isChecked = false;
+  int _totalMistakes = 0;
+  late int _totalQuestions;
 
   void _setSelectedOption(String? id) {
     if (_isChecked) {
@@ -56,6 +58,10 @@ class _VocaGameState extends State<VocaGameScreen> {
     }
     _queue.addAll(list);
 
+    setState(() {
+      _totalQuestions = list.length;
+    });
+
     super.initState();
   }
 
@@ -68,7 +74,7 @@ class _VocaGameState extends State<VocaGameScreen> {
     }
 
     if (_queue.isEmpty) {
-      context.router.push(const HomeRoute());
+      // context.router.push(const HomeRoute());
     }
 
     void next() {
@@ -83,6 +89,7 @@ class _VocaGameState extends State<VocaGameScreen> {
 
       if (selectedItem!.is_correct) {
         setState(() {
+          _totalMistakes++;
           // User answers correct
           if (_queue.isNotEmpty) {
             _queue.removeFirst();
@@ -104,7 +111,11 @@ class _VocaGameState extends State<VocaGameScreen> {
     }
 
     if (currentQuestion == null) {
-      return kEmptyWidget;
+      return VocaResult(
+        quizTheme: "Days of week",
+        totalMistakes: _totalMistakes,
+        totalQuestions: _queue.length,
+      );
     }
 
     return Scaffold(
@@ -147,6 +158,7 @@ class _VocaGameState extends State<VocaGameScreen> {
             Gap(60.h),
             SizedBox(
               width: double.infinity,
+              height: 100.h,
               child: AppElevatedButton(
                 onPressed: _isChecked ? next : checkAnswer,
                 text: _isChecked ? "Далее" : "Проверить",
