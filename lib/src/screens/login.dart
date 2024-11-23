@@ -104,12 +104,11 @@ class LoginScreenState extends State<LoginScreen> {
               Gap(20.h),
               SizedBox(
                 width: double.infinity,
-                child: _signInLoading
-                    ? const MiniLoader()
-                    : AppElevatedButton(
-                        onPressed: onTapLogin,
-                        text: "Войти",
-                      ),
+                child: AppElevatedButton(
+                  onPressed: onTapLogin,
+                  text: "Войти",
+                  isLoading: _signInLoading,
+                ),
               ),
               Gap(20.h),
               SizedBox(

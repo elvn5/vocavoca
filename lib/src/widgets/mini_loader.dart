@@ -7,8 +7,8 @@ class MiniLoader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 50.h,
-      width: 50.w,
+      height: 20.h,
+      width: 20.w,
       child: const Center(
         child: CircularProgressIndicator(),
       ),

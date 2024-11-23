@@ -1,10 +1,7 @@
-import 'dart:math';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:vocavoca/src/bloc/bloc.dart';
 import 'package:vocavoca/src/models/models.dart';
-import 'package:vocavoca/src/utils/random_shuffle.dart';
 
 class ElementaryBloc extends Bloc<ElementaryEvent, ElementaryState> {
   final SupabaseClient _supabaseService;
@@ -21,9 +18,13 @@ class ElementaryBloc extends Bloc<ElementaryEvent, ElementaryState> {
 
         final data = response.map((el) => VocaQuiz.fromJson(el)).toList();
 
-        emit(ElementaryLoadedState(data: data));
+        emit(
+          ElementaryLoadedState(data: data),
+        );
       } catch (e) {
-        emit(ElementaryLoadingErrorState());
+        emit(
+          ElementaryLoadingErrorState(),
+        );
       }
     });
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vocavoca/src/widgets/mini_loader.dart';
 import 'package:vocavoca/src/widgets/typography.dart';
 
 class AppElevatedButton extends StatelessWidget {
@@ -16,6 +17,7 @@ class AppElevatedButton extends StatelessWidget {
     this.backgroundColor,
     this.style,
     this.disabled = false,
+    this.isLoading = false,
   });
 
   final String text;
@@ -30,6 +32,7 @@ class AppElevatedButton extends StatelessWidget {
   final Color? backgroundColor;
   final ButtonStyle? style;
   final bool disabled;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -47,10 +50,12 @@ class AppElevatedButton extends StatelessWidget {
       style: disabled
           ? disabledStyle
           : style ?? Theme.of(context).elevatedButtonTheme.style,
-      child: Paragraph(
-        text,
-        color: Colors.white,
-      ),
+      child: isLoading
+          ? const MiniLoader()
+          : Paragraph(
+              text,
+              color: Colors.white,
+            ),
     );
   }
 }

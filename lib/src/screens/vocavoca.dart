@@ -71,7 +71,7 @@ class VocaVocaScreen extends StatelessWidget {
                   var data = state.data;
 
                   return AppContainer(
-                    child: ListView.builder(
+                    child: ListView.separated(
                       itemCount: state.data.length,
                       itemBuilder: (BuildContext context, int index) {
                         return VocaTheme(
@@ -81,6 +81,9 @@ class VocaVocaScreen extends StatelessWidget {
                             data[index].questions,
                           ),
                         );
+                      },
+                      separatorBuilder: (context, index) {
+                        return Gap(10.h);
                       },
                     ),
                   );

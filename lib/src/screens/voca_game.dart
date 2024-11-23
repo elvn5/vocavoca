@@ -89,7 +89,6 @@ class _VocaGameState extends State<VocaGameScreen> {
 
       if (selectedItem!.is_correct) {
         setState(() {
-          _totalMistakes++;
           // User answers correct
           if (_queue.isNotEmpty) {
             _queue.removeFirst();
@@ -98,6 +97,8 @@ class _VocaGameState extends State<VocaGameScreen> {
       } else {
         // User makes mistake, add this question to the end of Queue
         setState(() {
+          _totalMistakes++;
+
           final firstElement = _queue.removeFirst();
           _queue.addLast(firstElement);
         });
