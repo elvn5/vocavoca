@@ -39,14 +39,6 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const LoginScreen(),
       );
     },
-    MainWrapperRoute.name: (routeData) {
-      final args = routeData.argsAs<MainWrapperRouteArgs>(
-          orElse: () => const MainWrapperRouteArgs());
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: MainWrapperScreen(key: args.key),
-      );
-    },
     ProfileRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -135,35 +127,6 @@ class LoginRoute extends PageRouteInfo<void> {
   static const String name = 'LoginRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [MainWrapperScreen]
-class MainWrapperRoute extends PageRouteInfo<MainWrapperRouteArgs> {
-  MainWrapperRoute({
-    Key? key,
-    List<PageRouteInfo>? children,
-  }) : super(
-          MainWrapperRoute.name,
-          args: MainWrapperRouteArgs(key: key),
-          initialChildren: children,
-        );
-
-  static const String name = 'MainWrapperRoute';
-
-  static const PageInfo<MainWrapperRouteArgs> page =
-      PageInfo<MainWrapperRouteArgs>(name);
-}
-
-class MainWrapperRouteArgs {
-  const MainWrapperRouteArgs({this.key});
-
-  final Key? key;
-
-  @override
-  String toString() {
-    return 'MainWrapperRouteArgs{key: $key}';
-  }
 }
 
 /// generated route for

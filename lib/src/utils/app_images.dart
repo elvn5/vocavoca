@@ -6,6 +6,7 @@ const String signUpImage = "$mainImagePath/sign-up-image.png";
 
 // Utilities
 const String inDev = "$mainImagePath/in-development.png";
+const String thankYou = "$mainImagePath/thank-you.png";
 
 // Profile
 const String genericAvatar = "$mainImagePath/generic-avatar.png";

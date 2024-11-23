@@ -9,25 +9,18 @@ part 'router.gr.dart';
 class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(
-          page: MainWrapperRoute.page,
-          initial: true,
-          children: [
-            // Login & Sign-Up
-            AutoRoute(page: LoginRoute.page, initial: true),
-            AutoRoute(page: RegisterRoute.page),
-            AutoRoute(page: EmailConfirmationRoute.page),
+        AutoRoute(page: LoginRoute.page, initial: true),
+        AutoRoute(page: RegisterRoute.page),
+        AutoRoute(page: EmailConfirmationRoute.page),
 
-            // Bottom Navigation Bar
-            AutoRoute(page: HomeRoute.page, children: [
-              AutoRoute(page: VocaVocaRoute.page, initial: true),
-              AutoRoute(page: AchievementsRoute.page),
-              AutoRoute(page: ProfileRoute.page),
-            ]),
+        // Bottom Navigation Bar
+        AutoRoute(page: HomeRoute.page, children: [
+          AutoRoute(page: VocaVocaRoute.page, initial: true),
+          AutoRoute(page: AchievementsRoute.page),
+          AutoRoute(page: ProfileRoute.page),
+        ]),
 
-            // VocaGame
-            AutoRoute(page: VocaGameRoute.page)
-          ],
-        )
+        // VocaGame
+        AutoRoute(page: VocaGameRoute.page)
       ];
 }
