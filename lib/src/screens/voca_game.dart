@@ -8,7 +8,6 @@ import 'package:vocavoca/src/extensions/media_query_extension.dart';
 import 'package:vocavoca/src/features/features.dart';
 import 'package:vocavoca/src/models/models.dart';
 import 'package:vocavoca/src/routes/router.dart';
-import 'package:vocavoca/src/utils/consts.dart';
 import 'package:vocavoca/src/utils/random_shuffle.dart';
 import 'package:vocavoca/src/widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
@@ -18,9 +17,11 @@ class VocaGameScreen extends StatefulWidget {
   const VocaGameScreen({
     super.key,
     required this.questions,
+    required this.theme,
   });
 
   final List<Question> questions;
+  final String theme;
 
   @override
   State<StatefulWidget> createState() {
@@ -111,11 +112,19 @@ class _VocaGameState extends State<VocaGameScreen> {
       });
     }
 
+    void onTapRestart() {
+      context.router.push(VocaGameRoute(
+        questions: widget.questions,
+        theme: widget.theme,
+      ));
+    }
+
     if (currentQuestion == null) {
       return VocaResult(
-        quizTheme: "Days of week",
+        quizTheme: widget.theme,
         totalMistakes: _totalMistakes,
         totalQuestions: _queue.length,
+        onTapRestart: onTapRestart,
       );
     }
 
@@ -129,7 +138,10 @@ class _VocaGameState extends State<VocaGameScreen> {
           children: [
             Gap(71.h),
             Center(
-              child: TitleLarge(currentQuestion.desc),
+              child: TitleLarge(
+                currentQuestion.desc,
+                fontSize: 36.sp,
+              ),
             ),
             Gap(36.h),
             // const Timer(),

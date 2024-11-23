@@ -55,6 +55,7 @@ class VocaOption extends StatelessWidget {
         duration: const Duration(milliseconds: 300),
         child: Center(
           child: Paragraph(
+            fontSize: 20.sp,
             desc,
             color: Colors.green,
           ),
@@ -76,6 +77,7 @@ class VocaOption extends StatelessWidget {
         duration: const Duration(milliseconds: 300),
         child: Center(
           child: Paragraph(
+            fontSize: 20.sp,
             desc,
             color: isActive ? Colors.blue : Colors.black,
           ),

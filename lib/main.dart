@@ -7,12 +7,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:vocavoca/src/di/di.dart';
 import 'package:vocavoca/src/routes/router.dart';
-import 'package:vocavoca/src/services/services.dart';
 import 'package:vocavoca/src/utils/utils.dart';
 
 void main() async {
   // Init OS native functions
   WidgetsFlutterBinding.ensureInitialized();
+  // Load env variables
   await dotenv.load();
 
   // Init supabase instance
@@ -25,7 +25,6 @@ void main() async {
   );
   // Setup DI with GetIt
   setupDi();
-  // Load environment variables
   // Init localization
   await EasyLocalization.ensureInitialized();
   // Set preffered orientation
@@ -35,21 +34,23 @@ void main() async {
 
   runApp(
     EasyLocalization(
-        supportedLocales: const [
-          Locale("en"),
-          Locale("ru"),
-        ],
-        path: "assets/translations",
-        fallbackLocale: const Locale("en"),
-        assetLoader: const YamlAssetLoader(),
-        child: App()),
+      supportedLocales: const [
+        Locale("en"),
+        Locale("ru"),
+      ],
+      path: "assets/translations",
+      fallbackLocale: const Locale("en"),
+      assetLoader: const YamlAssetLoader(),
+      child: App(),
+    ),
   );
 }
 
 class App extends StatelessWidget {
+  final _router = AppRouter();
+
   App({super.key});
 
-  final _router = AppRouter();
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(

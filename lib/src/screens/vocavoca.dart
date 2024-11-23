@@ -19,10 +19,11 @@ class VocaVocaScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final elementaryBloc = getIt<ElementaryBloc>();
 
-    void onTapTheme(List<Question> questions) {
+    void onTapTheme(List<Question> questions, String theme) {
       context.router.push(
         VocaGameRoute(
           questions: questions,
+          theme: theme,
         ),
       );
     }
@@ -79,6 +80,7 @@ class VocaVocaScreen extends StatelessWidget {
                           img: data[index].imageUrl,
                           onTap: () => onTapTheme(
                             data[index].questions,
+                            data[index].description,
                           ),
                         );
                       },

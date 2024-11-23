@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:vocavoca/src/services/services.dart';
 import 'package:vocavoca/src/utils/utils.dart';
 import 'package:vocavoca/src/widgets/widgets.dart';
+import 'package:auto_route/auto_route.dart';
 
 @RoutePage()
 class ProfileScreen extends StatelessWidget {
@@ -13,6 +14,12 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final String email = supabaseService.auth.currentUser?.email ?? "";
+
+    void onTapLogout() async {
+      try {
+        await supabaseService.auth.signOut();
+      } catch (e) {}
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -42,7 +49,7 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     Gap(34.h),
                     Paragraph(email),
-                    Gap(165.h),
+                    Gap(120.h),
                     SizedBox(
                       width: double.infinity,
                       child: AppElevatedButton(
@@ -54,7 +61,20 @@ class ProfileScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                    )
+                    ),
+                    Gap(20.h),
+                    SizedBox(
+                      width: double.infinity,
+                      child: AppElevatedButton(
+                        onPressed: onTapLogout,
+                        text: "Выйти",
+                        style: ButtonStyle(
+                          backgroundColor: WidgetStateProperty.all<Color>(
+                            errorColor,
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               )

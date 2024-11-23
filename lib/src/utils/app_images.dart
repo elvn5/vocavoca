@@ -9,3 +9,6 @@ const String inDev = "$mainImagePath/in-development.png";
 
 // Profile
 const String genericAvatar = "$mainImagePath/generic-avatar.png";
+
+// Voca Game
+const String resultScreen = "$mainImagePath/survey-result.png";

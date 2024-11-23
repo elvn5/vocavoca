@@ -1,6 +1,8 @@
+export 'main_wrapper.dart';
+
 export 'login.dart';
 export 'register.dart';
-export 'verification.dart';
+export 'email_confirmation.dart';
 export 'home.dart';
 
 export 'vocavoca.dart';

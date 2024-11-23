@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:gap/gap.dart';
 import 'package:vocavoca/src/routes/router.dart';
 import 'package:vocavoca/src/services/services.dart';
@@ -10,7 +11,9 @@ import 'package:vocavoca/src/widgets/widgets.dart';
 
 @RoutePage()
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  const LoginScreen({
+    super.key,
+  });
 
   @override
   State<StatefulWidget> createState() {
@@ -20,7 +23,6 @@ class LoginScreen extends StatefulWidget {
 
 class LoginScreenState extends State<LoginScreen> {
   bool _signInLoading = false;
-  bool _signUpLoading = false;
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _loginFormKey = GlobalKey<FormBuilderState>();
@@ -44,21 +46,29 @@ class LoginScreenState extends State<LoginScreen> {
     }
 
     void onTapLogin() async {
-      final isValid = _loginFormKey.currentState?.validate();
-      if (isValid != true) {
+      _loginFormKey.currentState?.saveAndValidate();
+
+      final email = _loginFormKey.currentState?.value["email"];
+      final password = _loginFormKey.currentState?.value["password"];
+
+      if (_loginFormKey.currentState?.isValid != true) {
         return;
       }
-      setState(() {
-        _signInLoading = true;
-      });
+
+      setState(
+        () {
+          _signInLoading = true;
+        },
+      );
 
       try {
         await supabaseService.auth.signInWithPassword(
-          email: "zetxc996@gmail.com",
-          password: "erma219611",
+          email: email,
+          password: password,
         );
+
         if (context.mounted) {
-          context.router.push(const HomeRoute());
+          context.router.replaceAll([const HomeRoute()]);
         }
       } catch (e) {
         if (context.mounted) {
@@ -85,22 +95,38 @@ class LoginScreenState extends State<LoginScreen> {
               Image.asset(loginImage),
               Gap(55.h),
               FormBuilder(
-                  key: _loginFormKey,
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        AppTextField(
-                          labelText: "E-Mail",
-                          controller: _emailController,
-                        ),
-                        Gap(20.h),
-                        AppTextField(
-                          controller: _passwordController,
-                          labelText: "Пароль",
-                        ),
-                      ],
-                    ),
-                  )),
+                key: _loginFormKey,
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      AppFormBuilderTextField(
+                        labelText: "E-Mail",
+                        name: "email",
+                        controller: _emailController,
+                        validator: FormBuilderValidators.compose([
+                          FormBuilderValidators.required(
+                            errorText: "E-Mail Обязателен",
+                          ),
+                          FormBuilderValidators.email(
+                              errorText: "E-Mail Обязателен")
+                        ]),
+                      ),
+                      Gap(20.h),
+                      AppFormBuilderTextField(
+                        name: "password",
+                        controller: _passwordController,
+                        labelText: "Пароль",
+                        obscureText: true,
+                        validator: FormBuilderValidators.compose([
+                          FormBuilderValidators.required(
+                            errorText: "Обязательное поле",
+                          ),
+                        ]),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
               Gap(20.h),
               SizedBox(
                 width: double.infinity,
@@ -119,12 +145,12 @@ class LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               Gap(10.h),
-              const Divider(),
-              SizedBox(
-                width: double.infinity,
-                child:
-                    AppTextButton(onPressed: () => {}, text: "Забыли пароль?"),
-              )
+              // const Divider(),
+              // SizedBox(
+              //   width: double.infinity,
+              //   child: AppTextButton(
+              //       onPressed: onTapAnonLogin, text: "Войти анонимно"),
+              // ),
             ],
           ),
         ),

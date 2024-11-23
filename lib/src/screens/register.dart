@@ -16,7 +16,7 @@ class RegisterScreen extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _isLoading = useState(false);
+    final isLoading = useState(false);
 
     void onPressRegister() async {
       _formKey.currentState?.saveAndValidate();
@@ -25,7 +25,7 @@ class RegisterScreen extends HookWidget {
       final password = _formKey.currentState?.value["password"];
 
       if (_formKey.currentState?.isValid ?? false) {
-        _isLoading.value = true;
+        isLoading.value = true;
         try {
           await supabaseService.auth.signUp(
             email: email,
@@ -41,7 +41,7 @@ class RegisterScreen extends HookWidget {
             );
           }
         } finally {
-          _isLoading.value = false;
+          isLoading.value = false;
         }
       }
     }
@@ -66,7 +66,8 @@ class RegisterScreen extends HookWidget {
                           errorText: "E-Mail Обязателен",
                         ),
                         FormBuilderValidators.email(
-                            errorText: "E-Mail Обязателен")
+                          errorText: "E-Mail Обязателен",
+                        )
                       ]),
                     ),
                     Gap(20.h),
@@ -90,7 +91,7 @@ class RegisterScreen extends HookWidget {
               const Divider(),
               SizedBox(
                 width: double.infinity,
-                child: _isLoading.value
+                child: isLoading.value
                     ? const MiniLoader()
                     : AppElevatedButton(onPressed: onPressRegister, text: "GO"),
               )

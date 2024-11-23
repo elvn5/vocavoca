@@ -36,10 +36,10 @@ ThemeData lightTheme = ThemeData(
   ),
   useMaterial3: true,
   textTheme: TextTheme(
-    titleLarge: TextStyle(fontFamily: "Roboto", fontSize: 22.sp),
-    titleMedium: TextStyle(fontFamily: "Roboto", fontSize: 18.sp),
-    labelLarge: TextStyle(fontFamily: "Roboto", fontSize: 14.sp),
-    bodyMedium: TextStyle(fontFamily: "Roboto", fontSize: 10.sp),
-    bodySmall: TextStyle(fontFamily: "Roboto", fontSize: 8.sp),
+    titleLarge: TextStyle(fontFamily: "Roboto", fontSize: 32.sp),
+    titleMedium: TextStyle(fontFamily: "Roboto", fontSize: 22.sp),
+    labelLarge: TextStyle(fontFamily: "Roboto", fontSize: 18.sp),
+    bodyMedium: TextStyle(fontFamily: "Roboto", fontSize: 14.sp),
+    bodySmall: TextStyle(fontFamily: "Roboto", fontSize: 10.sp),
   ),
 );
