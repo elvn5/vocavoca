@@ -2,6 +2,7 @@ import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:vocavoca/src/routes/router.dart';
 import 'package:vocavoca/src/services/services.dart';
 import 'package:vocavoca/src/utils/utils.dart';
 import 'package:vocavoca/src/widgets/widgets.dart';
@@ -18,6 +19,9 @@ class ProfileScreen extends StatelessWidget {
     void onTapLogout() async {
       try {
         await supabaseService.auth.signOut();
+        if (context.mounted) {
+          context.router.replaceAll([const LoginRoute()]);
+        }
       } catch (e) {}
     }
 

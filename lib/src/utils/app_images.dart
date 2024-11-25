@@ -1,8 +1,8 @@
 const String mainImagePath = "assets/images";
 
 // Login & Sign-Up
-const String loginImage = "$mainImagePath/login-image.png";
-const String signUpImage = "$mainImagePath/sign-up-image.png";
+const String loginImage = "$mainImagePath/student-studying.png";
+const String signUpImage = "$mainImagePath/rocket.png";
 
 // Utilities
 const String inDev = "$mainImagePath/in-development.png";

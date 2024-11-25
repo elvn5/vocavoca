@@ -4,11 +4,12 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:vocavoca/main.dart';
+import 'package:vocavoca/src/routes/router.dart';
 import 'package:vocavoca/src/services/services.dart';
 import 'package:vocavoca/src/utils/app_images.dart';
 import 'package:vocavoca/src/widgets/widgets.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:auto_route/auto_route.dart';
 
 @RoutePage()
 class RegisterScreen extends HookWidget {
@@ -32,6 +33,9 @@ class RegisterScreen extends HookWidget {
             email: email,
             password: password,
           );
+          if (context.mounted) {
+            context.router.push(const HomeRoute());
+          }
         } catch (e) {
           if (context.mounted) {
             ScaffoldMessenger.of(context).showSnackBar(
@@ -53,8 +57,11 @@ class RegisterScreen extends HookWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Image.asset(signUpImage),
-              Gap(55.h),
+              Image.asset(
+                signUpImage,
+                height: 200.h,
+              ),
+              Gap(20.h),
               FormBuilder(
                 key: _formKey,
                 child: Column(

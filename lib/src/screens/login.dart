@@ -4,6 +4,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:gap/gap.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:vocavoca/src/routes/router.dart';
 import 'package:vocavoca/src/services/services.dart';
 import 'package:vocavoca/src/utils/utils.dart';
@@ -70,6 +71,15 @@ class LoginScreenState extends State<LoginScreen> {
         if (context.mounted) {
           context.router.replaceAll([const HomeRoute()]);
         }
+      } on AuthException catch (e) {
+        if (context.mounted && e.code == "invalid_credentials") {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text("Логин или пароль неверны"),
+              backgroundColor: Color.fromARGB(255, 243, 49, 6),
+            ),
+          );
+        }
       } catch (e) {
         if (context.mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -92,8 +102,11 @@ class LoginScreenState extends State<LoginScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Image.asset(loginImage),
-              Gap(55.h),
+              Image.asset(
+                loginImage,
+                height: 200.h,
+              ),
+              Gap(20.h),
               FormBuilder(
                 key: _loginFormKey,
                 child: SingleChildScrollView(
