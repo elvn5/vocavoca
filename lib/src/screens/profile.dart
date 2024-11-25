@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:vocavoca/src/routes/router.dart';
 import 'package:vocavoca/src/services/services.dart';
 import 'package:vocavoca/src/utils/utils.dart';
+import 'package:vocavoca/src/utils/version.dart';
 import 'package:vocavoca/src/widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
 
@@ -29,10 +30,10 @@ class ProfileScreen extends StatelessWidget {
       appBar: AppBar(
         title: const TitleLarge("Профиль"),
         actions: [
-          const Icon(
-            Icons.dark_mode_outlined,
-            size: 24,
-          ),
+          // const Icon(
+          //   Icons.dark_mode_outlined,
+          //   size: 24,
+          // ),
           Gap(20.w),
         ],
       ),
@@ -53,7 +54,7 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     Gap(34.h),
                     Paragraph(email),
-                    Gap(120.h),
+                    Gap(80.h),
                     SizedBox(
                       width: double.infinity,
                       child: AppElevatedButton(
@@ -79,6 +80,8 @@ class ProfileScreen extends StatelessWidget {
                         ),
                       ),
                     ),
+                    Gap(20.h),
+                    const Paragraph("Версия $appVersion")
                   ],
                 ),
               )

@@ -34,10 +34,10 @@ class VocaVocaScreen extends StatelessWidget {
         appBar: AppBar(
           title: const TitleLarge("VocaVoca"),
           actions: [
-            const Icon(
-              Icons.dark_mode_outlined,
-              size: 24,
-            ),
+            // const Icon(
+            //   Icons.dark_mode_outlined,
+            //   size: 24,
+            // ),
             Gap(20.w),
           ],
           bottom: const TabBar(tabs: [
