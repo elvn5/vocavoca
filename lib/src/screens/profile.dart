@@ -11,7 +11,7 @@ import 'package:auto_route/auto_route.dart';
 
 @RoutePage()
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+  ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class ProfileScreen extends StatelessWidget {
       try {
         await supabaseService.auth.signOut();
         if (context.mounted) {
-          context.router.replaceAll([const LoginRoute()]);
+          context.router.replaceAll([LoginRoute()]);
         }
       } catch (e) {}
     }

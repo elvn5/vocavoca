@@ -3,7 +3,7 @@ import 'package:vocavoca/src/widgets/typography.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class VocaOption extends StatelessWidget {
-  const VocaOption({
+  VocaOption({
     super.key,
     required this.desc,
     required this.id,

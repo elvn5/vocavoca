@@ -4,7 +4,7 @@ import 'package:vocavoca/src/widgets/in_development.dart';
 
 @RoutePage()
 class AchievementsScreen extends StatelessWidget {
-  const AchievementsScreen({super.key});
+  AchievementsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -10,7 +10,7 @@ import 'package:vocavoca/src/widgets/typography.dart';
 import 'package:auto_route/auto_route.dart';
 
 class VocaResult extends StatelessWidget {
-  const VocaResult(
+  VocaResult(
       {super.key,
       required this.quizTheme,
       required this.totalMistakes,
@@ -25,7 +25,7 @@ class VocaResult extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void onTapMain() {
-      context.router.push(const VocaVocaRoute());
+      context.router.push(VocaVocaRoute());
     }
 
     return Scaffold(

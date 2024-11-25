@@ -13,7 +13,7 @@ import 'package:auto_route/auto_route.dart';
 
 @RoutePage()
 class VocaVocaScreen extends StatelessWidget {
-  const VocaVocaScreen({super.key});
+  VocaVocaScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

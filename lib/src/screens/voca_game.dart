@@ -14,7 +14,7 @@ import 'package:auto_route/auto_route.dart';
 
 @RoutePage()
 class VocaGameScreen extends StatefulWidget {
-  const VocaGameScreen({
+  VocaGameScreen({
     super.key,
     required this.questions,
     required this.theme,

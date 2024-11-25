@@ -34,7 +34,7 @@ class RegisterScreen extends HookWidget {
             password: password,
           );
           if (context.mounted) {
-            context.router.push(const HomeRoute());
+            context.router.push(HomeRoute());
           }
         } catch (e) {
           if (context.mounted) {

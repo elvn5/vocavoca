@@ -3,7 +3,7 @@ import 'package:vocavoca/src/widgets/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class VocaTheme extends StatelessWidget {
-  const VocaTheme({
+  VocaTheme({
     super.key,
     required this.name,
     required this.img,

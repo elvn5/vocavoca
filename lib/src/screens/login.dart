@@ -12,7 +12,7 @@ import 'package:vocavoca/src/widgets/widgets.dart';
 
 @RoutePage()
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({
+  LoginScreen({
     super.key,
   });
 
@@ -69,7 +69,7 @@ class LoginScreenState extends State<LoginScreen> {
         );
 
         if (context.mounted) {
-          context.router.replaceAll([const HomeRoute()]);
+          context.router.replaceAll([HomeRoute()]);
         }
       } on AuthException catch (e) {
         if (context.mounted && e.code == "invalid_credentials") {

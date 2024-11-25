@@ -16,33 +16,43 @@ abstract class _$AppRouter extends RootStackRouter {
   @override
   final Map<String, PageFactory> pagesMap = {
     AchievementsRoute.name: (routeData) {
+      final args = routeData.argsAs<AchievementsRouteArgs>(
+          orElse: () => const AchievementsRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const AchievementsScreen(),
+        child: AchievementsScreen(key: args.key),
       );
     },
     EmailConfirmationRoute.name: (routeData) {
+      final args = routeData.argsAs<EmailConfirmationRouteArgs>(
+          orElse: () => const EmailConfirmationRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const EmailConfirmationScreen(),
+        child: EmailConfirmationScreen(key: args.key),
       );
     },
     HomeRoute.name: (routeData) {
+      final args =
+          routeData.argsAs<HomeRouteArgs>(orElse: () => const HomeRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const HomeScreen(),
+        child: HomeScreen(key: args.key),
       );
     },
     LoginRoute.name: (routeData) {
+      final args = routeData.argsAs<LoginRouteArgs>(
+          orElse: () => const LoginRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const LoginScreen(),
+        child: LoginScreen(key: args.key),
       );
     },
     ProfileRoute.name: (routeData) {
+      final args = routeData.argsAs<ProfileRouteArgs>(
+          orElse: () => const ProfileRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const ProfileScreen(),
+        child: ProfileScreen(key: args.key),
       );
     },
     RegisterRoute.name: (routeData) {
@@ -65,9 +75,11 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     VocaVocaRoute.name: (routeData) {
+      final args = routeData.argsAs<VocaVocaRouteArgs>(
+          orElse: () => const VocaVocaRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const VocaVocaScreen(),
+        child: VocaVocaScreen(key: args.key),
       );
     },
   };
@@ -75,72 +87,145 @@ abstract class _$AppRouter extends RootStackRouter {
 
 /// generated route for
 /// [AchievementsScreen]
-class AchievementsRoute extends PageRouteInfo<void> {
-  const AchievementsRoute({List<PageRouteInfo>? children})
-      : super(
+class AchievementsRoute extends PageRouteInfo<AchievementsRouteArgs> {
+  AchievementsRoute({
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           AchievementsRoute.name,
+          args: AchievementsRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'AchievementsRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<AchievementsRouteArgs> page =
+      PageInfo<AchievementsRouteArgs>(name);
+}
+
+class AchievementsRouteArgs {
+  const AchievementsRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'AchievementsRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for
 /// [EmailConfirmationScreen]
-class EmailConfirmationRoute extends PageRouteInfo<void> {
-  const EmailConfirmationRoute({List<PageRouteInfo>? children})
-      : super(
+class EmailConfirmationRoute extends PageRouteInfo<EmailConfirmationRouteArgs> {
+  EmailConfirmationRoute({
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           EmailConfirmationRoute.name,
+          args: EmailConfirmationRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'EmailConfirmationRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<EmailConfirmationRouteArgs> page =
+      PageInfo<EmailConfirmationRouteArgs>(name);
+}
+
+class EmailConfirmationRouteArgs {
+  const EmailConfirmationRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'EmailConfirmationRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for
 /// [HomeScreen]
-class HomeRoute extends PageRouteInfo<void> {
-  const HomeRoute({List<PageRouteInfo>? children})
-      : super(
+class HomeRoute extends PageRouteInfo<HomeRouteArgs> {
+  HomeRoute({
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           HomeRoute.name,
+          args: HomeRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'HomeRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<HomeRouteArgs> page = PageInfo<HomeRouteArgs>(name);
+}
+
+class HomeRouteArgs {
+  const HomeRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'HomeRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for
 /// [LoginScreen]
-class LoginRoute extends PageRouteInfo<void> {
-  const LoginRoute({List<PageRouteInfo>? children})
-      : super(
+class LoginRoute extends PageRouteInfo<LoginRouteArgs> {
+  LoginRoute({
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           LoginRoute.name,
+          args: LoginRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'LoginRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<LoginRouteArgs> page = PageInfo<LoginRouteArgs>(name);
+}
+
+class LoginRouteArgs {
+  const LoginRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'LoginRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for
 /// [ProfileScreen]
-class ProfileRoute extends PageRouteInfo<void> {
-  const ProfileRoute({List<PageRouteInfo>? children})
-      : super(
+class ProfileRoute extends PageRouteInfo<ProfileRouteArgs> {
+  ProfileRoute({
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           ProfileRoute.name,
+          args: ProfileRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'ProfileRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<ProfileRouteArgs> page =
+      PageInfo<ProfileRouteArgs>(name);
+}
+
+class ProfileRouteArgs {
+  const ProfileRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'ProfileRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for
@@ -217,14 +302,29 @@ class VocaGameRouteArgs {
 
 /// generated route for
 /// [VocaVocaScreen]
-class VocaVocaRoute extends PageRouteInfo<void> {
-  const VocaVocaRoute({List<PageRouteInfo>? children})
-      : super(
+class VocaVocaRoute extends PageRouteInfo<VocaVocaRouteArgs> {
+  VocaVocaRoute({
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           VocaVocaRoute.name,
+          args: VocaVocaRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'VocaVocaRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<VocaVocaRouteArgs> page =
+      PageInfo<VocaVocaRouteArgs>(name);
+}
+
+class VocaVocaRouteArgs {
+  const VocaVocaRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'VocaVocaRouteArgs{key: $key}';
+  }
 }

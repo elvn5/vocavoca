@@ -10,7 +10,7 @@ import 'package:vocavoca/src/extensions/media_query_extension.dart';
 
 @RoutePage()
 class EmailConfirmationScreen extends StatelessWidget {
-  const EmailConfirmationScreen({super.key});
+  EmailConfirmationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class EmailConfirmationScreen extends StatelessWidget {
                       width: double.infinity,
                       child: AppElevatedButton(
                         onPressed: () {
-                          context.router.push(const HomeRoute());
+                          context.router.push(HomeRoute());
                         },
                         text: "ОК",
                       ),

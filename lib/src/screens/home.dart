@@ -5,12 +5,12 @@ import 'package:vocavoca/src/routes/router.dart';
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
-      routes: const [
+      routes: [
         VocaVocaRoute(),
         AchievementsRoute(),
         ProfileRoute(),

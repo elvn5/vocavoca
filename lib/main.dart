@@ -13,6 +13,7 @@ import 'package:vocavoca/src/utils/utils.dart';
 void main() async {
   // Init OS native functions
   WidgetsFlutterBinding.ensureInitialized();
+  await ScreenUtil.ensureScreenSize();
   // Load env variables
   await dotenv.load();
 
@@ -28,10 +29,12 @@ void main() async {
   setupDi();
   // Init localization
   await EasyLocalization.ensureInitialized();
+
   // Set preffered orientation
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
+  await Future.delayed(const Duration(milliseconds: 150));
 
   runApp(
     EasyLocalization(
@@ -63,7 +66,7 @@ class App extends StatelessWidget {
           theme: lightTheme,
           routerConfig: _router.config(deepLinkBuilder: (deepLink) {
             if (deepLink.uri.host == "confirmation") {
-              return const DeepLink([EmailConfirmationRoute()]);
+              return DeepLink([EmailConfirmationRoute()]);
             }
             return DeepLink.defaultPath;
           }),
